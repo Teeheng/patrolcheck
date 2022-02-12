@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    {% if not form.is_valid %}
+        <form method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+            <p class="mt-4 text-center">
+                <button class="btn btn-primary"> ส่ง </button>
+            </p>            
+        </form>
+    {% else %}
+        <h3>บันทึกแล้ว</h3>
+        <a href = "{% url 'input' %}">เพิ่ม</a>
+    {% endif %}
+{% endblock %}
